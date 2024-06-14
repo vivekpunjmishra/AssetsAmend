@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <lightning-quick-action-panel header="Asset Selection">
+            <lightning-layout multiple-rows="true" vertical-align="Start">
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-layout multiple-rows="true" vertical-align="Start">
+          <lightning-layout-item size="8" padding="around-small">
+            <lightning-datatable key-field="id" data={Assets} columns={columns}   onrowselection={getSelectedName} >
+            </lightning-datatable>        
+          </lightning-layout-item>
+          <lightning-layout-item size="4" padding="around-small">
+            <lightning-button-icon icon-name="utility:filter" v onclick={filterHandler}>
+            </lightning-button-icon>
+                <lightning-button variant="neutral" label="Amend" class="slds-m-left_x-small" onclick={saveHandler}></lightning-button>
+                <lightning-button variant="neutral" label="Cancel" onclick={cancelHandler}></lightning-button>
+              <template if:true={isTrue}>
+                <div class="slds-m-around_medium">
+                    <lightning-input type="text" label="Asset Name" onchange={nameHandler}> </lightning-input>
+                    <lightning-input type="text" label="Serial Number" onchange={numHandler}> </lightning-input>
+                    <lightning-input type="text" label="SKU" onchange={SKUHandler}> </lightning-input>
+                    <lightning-input type="text" label="Ticket#" onchange={ticketHandler}> </lightning-input><br>
+                    <lightning-button variant="brand" label="Save Filter" class="slds-m-left_x-small" onclick={saveFilterHandler}></lightning-button>
+                </div> 
+              </template>
+            </lightning-layout-item>
+          </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+          </lightning-quick-action-panel>
+    </lightning-card>   
+</template>
